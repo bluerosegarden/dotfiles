@@ -1,0 +1,37 @@
+[safe]
+	directory = /mnt/c/Git/delphea-cli-rust
+	directory = /mnt/c/Git/blue.ingramrose.io
+	directory = /mnt/c/Git/grimoire
+[user]
+	email = mail@bluerose.garden
+	name = Blue Rose
+[pull]
+	rebase = false
+[maintenance]
+	repo = /home/wych/grimoire/files/zsh/zsh-snap
+[diff]
+	external = difft
+[identity "wych"]
+	name = wychwitch
+	email = wych@wychwit.ch
+	sshkey = persephone_wych
+[identity "blue"]
+	name = Blue Rose
+	email = mail@bluerose.garden
+	sshkey = /home/wych/.ssh/persephone_blue
+[init]
+	defaultBranch = main
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+	side-by-side = true
+
+[merge]
+    conflictstyle = zdiff3
