@@ -47,3 +47,6 @@ fi
 
 alias em="emacsclient -s magic -nc"
 alias e="emacsclient -s doom -nc"
+
+
+export PATH="$HOME/+emacs/doom.emacs.d/bin:$PATH"
