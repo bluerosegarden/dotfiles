@@ -4,4 +4,4 @@ sudo pacman -S gum
 
 gum confirm "Install git-identity?" && wget https://github.com/madx/git-identity/raw/refs/heads/master/git-identity && chmod 766 git-identity && mv git-identity /usr/local/bin
 
-
+gum confirm "Install Rustowl?" && curl -L "https://github.com/cordx56/rustowl/releases/download/v0.1.1/install.sh" | sh

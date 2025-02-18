@@ -25,6 +25,7 @@
 [core]
     pager = delta
 	editor = vim
+	sshCommand = ssh -i /home/wych/.ssh/persephone_blue
 
 [interactive]
     diffFilter = delta --color-only

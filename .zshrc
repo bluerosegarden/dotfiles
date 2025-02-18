@@ -1,7 +1,7 @@
 # Add deno completions to search path
 if [[ ":$FPATH:" != *":/home/wych/.zsh/completions:"* ]]; then export FPATH="/home/wych/.zsh/completions:$FPATH"; fi
 eval "$(starship init zsh)"
-alias ls="exa -lha --git"
+alias ls="eza -lha --git"
 eval "$(atuin init zsh)"
 export ZEN_MODE="on"
 autoload -Uz compinit
@@ -50,3 +50,4 @@ alias e="emacsclient -s doom -nc"
 
 
 export PATH="$HOME/+emacs/doom.emacs.d/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
