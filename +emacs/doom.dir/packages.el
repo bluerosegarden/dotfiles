@@ -48,3 +48,8 @@
 ;; (unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
+
+
+ (package! rustowlsp
+   :recipe (:host github :repo "cordx56/rustowl"
+            :files (:defaults "emacs/*")))

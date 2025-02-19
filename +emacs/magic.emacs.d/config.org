@@ -360,14 +360,14 @@ Normally, we need to add ~:ensure t~ to tell ~use-package~ to download packages 
 ** GUI enhancements
 *** Load custom theme
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'custom-theme-load-path (concat user-emacs-directory "C:/Git/grimoire/files/emacs/magic.emacs.d/themes/"))
+  (add-to-list 'custom-theme-load-path (concat user-emacs-directory "~/+emacs/magic.emacs.d/themes/"))
 #+END_SRC
 *** Dashboard welcome page
 #+BEGIN_SRC emacs-lisp
   (use-package dashboard
      :ensure t
      :config
-      (setq dashboard-startup-banner "~/grimoire/files/emacs/magic.emacs.d/logos/logo.svg"
+      (setq dashboard-startup-banner "~/+emacs/magic.emacs.d/logos/logo.svg"
        dashboard-banner-logo-title "Magic~"
        dashboard-image-banner-max-height 350
        dashboard-set-footer nil
@@ -768,6 +768,7 @@ Provides us with hints on available keystroke combinations.
 )
 
 (use-package wc-mode
+:ensure t
 :config
 (setq wc-idle-wait 2)
 (setq wc-modeline-format "[Words: %tw(%W + %w)/%gw]")
