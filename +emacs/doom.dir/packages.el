@@ -50,6 +50,6 @@
 ;; (unpin! t)
 
 
- (package! rustowlsp
-   :recipe (:host github :repo "cordx56/rustowl"
-            :files (:defaults "emacs/*")))
+; (package! rustowlsp
+;   :recipe (:host github :repo "cordx56/rustowl"
+;            :files (:defaults "emacs/*")))
