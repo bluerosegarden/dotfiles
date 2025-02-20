@@ -7,7 +7,6 @@
 
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
-. "$HOME/.cargo/env"
 
 # Following line was automatically added by arttime installer
 export PATH=/home/wych/.local/bin:$PATH
@@ -23,3 +22,4 @@ echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc 
 . "/home/wych/.deno/env"
 source /home/wych/.local/share/bash-completion/completions/deno.bash
+. "$HOME/.cargo/env"
