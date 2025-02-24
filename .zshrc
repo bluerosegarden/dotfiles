@@ -27,11 +27,11 @@ export DISPLAY=$(ip route|awk '/^default/{print $3}'):0.0
 source ~/.zshplugins/znap/znap.zsh  # Start Znap
 . "/home/wych/.deno/env"
 
-export DOOMDIR=~/+emacs/doom/doom.dir
+export DOOMDIR="$HOME/+emacs/doom.dir"
 
 if ! ps -e -o args | grep -i 'emacs' | grep -q 'daemon=magic'; then
   echo "Launching Magic Emacs Daemon"
-  emacs --daemon=magic  --init-directory=~/+emacs/magic.emacs.d
+  emacs --daemon=magic  --init-directory=$HOME/+emacs/magic.emacs.d
 else
   echo "Magic Emacs server Online"
 fi
@@ -39,7 +39,7 @@ fi
 
 if ! ps -e -o args | grep -i 'emacs' | grep -q 'daemon=doom'; then
   echo "Launching Doom Emacs Daemon"
-  emacs --daemon=doom  --init-directory=~/+emacs/doom.emacs.d
+  emacs --daemon=doom  --init-directory="$HOME/+emacs/doom.emacs.d" 
 else
   echo "Doom Emacs server Online"
 fi
