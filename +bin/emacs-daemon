@@ -1,0 +1,55 @@
+VALID_EMACS=("doom" "magic")
+VALID_ARGS=("up" "down" "restart")
+
+# Options
+opt_u=false
+opt_d=false
+opt_r=false
+
+function emacs_up()
+{
+	daemon=${1}
+	if ! ps -e -o args | grep -i 'emacs' | grep -q "daemon=${daemon}"; then
+		echo "Launching Emacs $daemon daemon"
+		emacs --daemon=$daemon  --init-directory="$HOME/+emacs/${daemon}.emacs.d"
+	else
+		echo "$daemon Emacs server already online"
+	fi
+}
+
+function emacs_down()
+{
+	daemon=${1}
+	if ! ps -e -o args | grep -i 'emacs' | grep -q "daemon=$daemon"; then
+		echo "$daemon isn't running!"
+	else
+		echo "killing emacs daemon $daemon"
+		emacsclient -s $daemon -e "(kill-emacs)"
+	fi
+}
+
+IS_VALID_EMACS=false
+IS_VALID_ARG=false
+
+if [[ $# -eq 0 ]]; then
+	echo "You need to give an arg!"
+else
+	for emac in $VALID_EMACS
+	do
+		if [[ $1 == emac ]]; then
+			IS_VALID_EMACS=true
+		fi
+	done
+	
+	if [[ IS_VALID_EMACS && $# -eq 2 ]]; then
+		EMACS_NAME=${1}
+        	case $2 in
+                	"up") emacs_up $EMACS_NAME;;
+                	"down") emacs_down $EMACS_NAME;;
+                	"restart") emacs_down $EMACS_NAME && emacs_up $EMACS_NAME;;
+			*) echo "Not recognized arg! It needs to be up, down, or restart"
+        	esac
+	else
+		echo "Bad args! You're bad! IDK I just wanna be done with this"
+	fi
+fi

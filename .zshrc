@@ -13,6 +13,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 notify-send() { wsl-notify-send.exe --category $WSL_DISTRO_NAME "${@}"; }
 source /usr/share/nvm/init-nvm.sh
 export PATH="$HOME/.basher/bin:$PATH"
+export PATH="$HOME/+bin:$PATH"
 eval "$(basher init - zsh)" # replace `bash` with `zsh` if you use zsh
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -29,21 +30,8 @@ source ~/.zshplugins/znap/znap.zsh  # Start Znap
 
 export DOOMDIR="$HOME/+emacs/doom.dir"
 
-if ! ps -e -o args | grep -i 'emacs' | grep -q 'daemon=magic'; then
-  echo "Launching Magic Emacs Daemon"
-  emacs --daemon=magic  --init-directory=$HOME/+emacs/magic.emacs.d
-else
-  echo "Magic Emacs server Online"
-fi
-
-
-if ! ps -e -o args | grep -i 'emacs' | grep -q 'daemon=doom'; then
-  echo "Launching Doom Emacs Daemon"
-  emacs --daemon=doom  --init-directory="$HOME/+emacs/doom.emacs.d" 
-else
-  echo "Doom Emacs server Online"
-fi
-
+emacs-daemon doom up
+emacs-daemon magic up
 
 alias em="emacsclient -s magic -nc"
 alias e="emacsclient -s doom -nc"
