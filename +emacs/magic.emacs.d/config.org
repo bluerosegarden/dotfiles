@@ -677,7 +677,13 @@ Provides us with hints on available keystroke combinations.
 #+END_SRC
 *** Writeroom
 #+BEGIN_SRC emacs-lisp
-(require 'wc-mode)
+
+(use-package wc-mode
+:ensure t
+:config
+(setq wc-idle-wait 2)
+(setq wc-modeline-format "[Words: %tw(%W + %w)/%gw]")
+)
   (use-package writeroom-mode
  :init
   (setq writeroom-width 0.5)
@@ -706,7 +712,6 @@ Provides us with hints on available keystroke combinations.
 *** typst-mode
 #+BEGIN_SRC emacs-lisp
 (use-package poly-markdown)
-  (use-package typst-mode)
 #+END_SRC
 *** quelpa
 #+BEGIN_SRC emacs-lisp
@@ -767,12 +772,6 @@ Provides us with hints on available keystroke combinations.
   (require 'ox-latex
 )
 
-(use-package wc-mode
-:ensure t
-:config
-(setq wc-idle-wait 2)
-(setq wc-modeline-format "[Words: %tw(%W + %w)/%gw]")
-)
 (use-package ox-pandoc
 :config
 (setq org-pandoc-options '((wrap . "preserve")))
