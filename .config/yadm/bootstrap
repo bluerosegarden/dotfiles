@@ -1,7 +1,22 @@
 #!/bin/sh
 
-sudo pacman -S gum
+# installing gum 
+sudo pacman -Syu && sudo pacman -S gum
 
-gum confirm "Install git-identity?" && wget https://github.com/madx/git-identity/raw/refs/heads/master/git-identity && chmod 766 git-identity && mv git-identity /usr/local/bin
+gum style \
+	--foreground 212 --border-foreground 212 --border double \
+	--align center --width 50 --margin "1 2" --padding "2 4" \
+	'Bootstrap Script!'
 
-gum confirm "Install Rustowl?" && curl -L "https://github.com/cordx56/rustowl/releases/download/v0.1.1/install.sh" | sh
+gum confirm "Run `yadm decrypt`?" && \
+	yadm decrypt
+
+gum confirm "Install git-identity? (Manual w/o basher)" && \
+	wget https://github.com/madx/git-identity/raw/refs/heads/master/git-identity && \
+	chmod 766 git-identity && \
+	sudo mv git-identity /usr/local/bin
+
+gum confirm "Install Rustowl?" && \
+	curl -L "https://github.com/cordx56/rustowl/releases/download/v0.1.1/install.sh" | sh
+
+
