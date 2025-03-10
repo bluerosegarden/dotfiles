@@ -8,6 +8,9 @@ gum style \
 	--align center --width 50 --margin "1 2" --padding "2 4" \
 	'Bootstrap Script!'
 
+gum confirm "Create needed default folders? (like +org/)" && \
+	mkdir -p ~/+org
+
 gum confirm "Run `yadm decrypt`?" && \
 	yadm decrypt
 
@@ -16,7 +19,21 @@ gum confirm "Install git-identity? (Manual w/o basher)" && \
 	chmod 766 git-identity && \
 	sudo mv git-identity /usr/local/bin
 
+gum confirm "Install emacs-lucid?" && \
+	mkdir -p ~/git/software && \
+	gum format -- "# Cloning emacs-lucid" && \
+	git clone https://aur.archlinux.org/emacs-lucid.git ~/git/software/ && \
+	cd ~/git/software/emacs-lucid && \
+	gum format -- "# Building emacs-lucid" && \
+	# Getting gpg keyring for package owner
+	gpg --recv-key 2D4E1FE95957135D && \ 
+	makepkg -si
+
+gum confirm "Install doom emacs to `~/+emacs/doom.emacs.d`?" && \
+	git clone git@github.com:doomemacs/doomemacs.git ~/+emacs/doom.emacs.d && \
+	gum format -- "# Don't forget to run doom install in a new terminal!"
+
 gum confirm "Install Rustowl?" && \
-	curl -L "https://github.com/cordx56/rustowl/releases/download/v0.1.1/install.sh" | sh
+	curl -L "https://github.com/cordx56/rustowl/releases/latest/download/install.sh" | sh
 
 
