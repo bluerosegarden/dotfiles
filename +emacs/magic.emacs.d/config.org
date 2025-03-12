@@ -126,7 +126,7 @@ possible to keep the configuration consistent. The option
                   ("x" . kill-buffer-and-window)
                   :map files
                   ("a" . write-file)
-  ("p". (lambda () (interactive) (find-file "~/grimoire/files/emacs/magic.emacs.d/config.org")) )
+  ("p". (lambda () (interactive) (find-file "~/+emacs/magic.emacs.d/config.org")) )
                   ("c" . copy-file)
                   ("f" . counsel-find-file)
                   ("i" . insert-file)
