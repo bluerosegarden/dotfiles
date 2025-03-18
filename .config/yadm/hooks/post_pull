@@ -1,2 +1,4 @@
 #!/bin/bash
-doom sync
+#
+#This does not work. I think YADM runs in a weird instanced version of reality
+#doom sync
