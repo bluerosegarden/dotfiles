@@ -11,7 +11,7 @@ gum style \
 gum confirm "Create needed default folders? (like +org/)" && \
 	mkdir -p ~/+org
 
-gum confirm "Run `yadm decrypt`?" && \
+gum confirm "Run 'yadm decrypt'?" && \
 	yadm decrypt
 
 gum confirm "Install fonts? (monaspace (frozen))" && \
@@ -35,7 +35,7 @@ gum confirm "Install emacs-lucid?" && \
 	gpg --recv-key 2D4E1FE95957135D && \ 
 	makepkg -si
 
-gum confirm "Install doom emacs to `~/+emacs/doom.emacs.d`?" && \
+gum confirm "Install doom emacs to '~/+emacs/doom.emacs.d'?" && \
 	git clone git@github.com:doomemacs/doomemacs.git ~/+emacs/doom.emacs.d && \
 	gum format -- "# Don't forget to run doom install in a new terminal!"
 
