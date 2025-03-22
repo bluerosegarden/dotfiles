@@ -22,7 +22,7 @@
 ;; accept. For example:
 ;;
 (+global-word-wrap-mode +1)
-(setq doom-font (font-spec :family "FantasqueSansM Nerd Font" :size 18 :weight 'regular))
+(setq doom-font (font-spec :family "Monaspace Neon Frozen" :size 18 :weight 'regular))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -83,3 +83,30 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;;[TODO]
+;; todo))
+;; [TODO]
+;; [TRACE]
+;; BAR
+;; todo
+;; fixme
+;; todo
+;;
+
+;;(after! hl-todo
+;;  (setq hl-todo-keyword-faces
+;;	`(("FOO" . "#ff0000")
+;;	  ("BAR" . "#ff0000"))))
+
+;;(after! hl-todo
+;;  (setq hl-todo-keyword-faces
+;;	`(("todo))" . "#ff0000")
+;;	  ("fixme" . "#ff0000"))))
+
+;; Setting
+
+(custom-set-faces
+ '(font-lock-comment-face ((t (:family "Monaspace Radon Frozen"))))
+ '(font-lock-string-face ((t (:family "Monaspace Argon Frozen" :italic t))))
+ )

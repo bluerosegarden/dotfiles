@@ -14,6 +14,12 @@ gum confirm "Create needed default folders? (like +org/)" && \
 gum confirm "Run `yadm decrypt`?" && \
 	yadm decrypt
 
+gum confirm "Install fonts? (monaspace (frozen))" && \
+	wget https://github.com/githubnext/monaspace/releases/download/v1.200/monaspace-v1.200.zip && \
+	unzip monaspace-v1.200.zip -d monatemp && \
+	mkdir -p ~/.local/share/fonts/monaspace/ && \
+	cp monatemp/monaspace-v1.200/fonts/frozen/* .local/share/fonts/monaspace
+
 gum confirm "Install git-identity? (Manual w/o basher)" && \
 	wget https://github.com/madx/git-identity/raw/refs/heads/master/git-identity && \
 	chmod 766 git-identity && \
