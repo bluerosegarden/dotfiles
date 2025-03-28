@@ -18,8 +18,8 @@ eval "$(basher init - zsh)" # replace `bash` with `zsh` if you use zsh
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-export DISPLAY=$(ip route|awk '/^default/{print $3}'):0.0
-
+export DISPLAY=$(ipconfig.exe | grep -m 1 IPv4 | awk '{print $14}' | awk 'sub(/\r$/,"")'):0.0
+export LIBGL_ALWAYS_INDIRECT=1
 
 # Download Znap, if it's not there yet.
 [[ -r ~/.zshplugins/znap/znap.zsh ]] ||
@@ -37,7 +37,7 @@ alias em="emacsclient -s magic -nc"
 alias e="emacsclient -s doom -nc"
 alias "g+++"="g++ *.cpp *.h"
 alias v="nvim"
-
+alias lk-exec="docker exec -it lorekeeper-services-frontend-1 sh -c" 
 
 export PATH="$HOME/+emacs/doom.emacs.d/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
