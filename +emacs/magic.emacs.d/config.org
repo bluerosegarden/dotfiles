@@ -369,7 +369,7 @@ Normally, we need to add ~:ensure t~ to tell ~use-package~ to download packages 
      :config
       (setq dashboard-startup-banner "~/+emacs/magic.emacs.d/logos/logo.svg"
        dashboard-banner-logo-title "Magic~"
-       dashboard-image-banner-max-height 350
+       dashboard-image-banner-height 50
        dashboard-set-footer nil
        dashboard-center-content t
        dashboard-items '((bookmarks . 3)
