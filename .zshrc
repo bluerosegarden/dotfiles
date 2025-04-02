@@ -31,11 +31,9 @@ source ~/.zshplugins/znap/znap.zsh  # Start Znap
 export DOOMDIR="$HOME/+emacs/doom.dir"
 
 emacs-daemon doom up
-#emacs-daemon magic up
-emacs-daemon babayaga up
+emacs-daemon magic up
 
 alias em="emacsclient -s magic -nc"
-alias eb="emacsclient -s babayaga -nc"
 alias e="emacsclient -s doom -nc"
 alias "g+++"="g++ *.cpp *.h"
 alias v="nvim"

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # installing gum 
-sudo pacman -Syu && sudo pacman -S gum
+sudo pacman -Syu && sudo pacman -S gum gpg
 
 gum style \
 	--foreground 212 --border-foreground 212 --border double \
@@ -35,9 +35,10 @@ gum confirm "Install emacs-lucid?" && \
 	gpg --recv-key 2D4E1FE95957135D && \ 
 	makepkg -si
 
-gum confirm "Install doom emacs to '~/+emacs/doom.emacs.d'?" && \
+gum confirm "Install doom emacs to '~/+emacs/doom.emacs.d' and +emacs/magic.emacs.d?" && \
 	git clone git@github.com:doomemacs/doomemacs.git ~/+emacs/doom.emacs.d && \
-	gum format -- "# Don't forget to run doom install in a new terminal!"
+	git clone git@github.com:doomemacs/doomemacs.git ~/+emacs/magic.emacs.d && \
+	gum format -- "# Don't forget to run doom install and doom install --profile magic in a new terminal!"
 
 gum confirm "Install Rustowl?" && \
 	curl -L "https://github.com/cordx56/rustowl/releases/latest/download/install.sh" | sh
