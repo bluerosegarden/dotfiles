@@ -1,4 +1,4 @@
-VALID_EMACS=("doom" "magic")
+VALID_EMACS=("doom" "magic" "babayaga")
 VALID_ARGS=("up" "down" "restart")
 
 # Options
@@ -9,9 +9,9 @@ opt_r=false
 function emacs_up()
 {
 	daemon=${1}
-	if ! ps -e -o args | grep -i 'emacs' | grep -q "daemon=${daemon}"; then
+	if ! ps -e -o args | grep -i 'emacs' | grep -q "daemon=$daemon"; then
 		echo "Launching Emacs $daemon daemon"
-		emacs --daemon=$daemon  --init-directory="$HOME/+emacs/${daemon}.emacs.d"
+		emacs --daemon=$daemon  --init-directory="$HOME/+emacs/doom.emacs.d" --profile $daemon
 	else
 		echo "$daemon Emacs server already online"
 	fi
@@ -50,6 +50,6 @@ else
 			*) echo "Not recognized arg! It needs to be up, down, or restart"
         	esac
 	else
-		echo "Bad args! You're bad! IDK I just wanna be done with this"
+		echo "emacs-daemon <NAME> <up/down>"
 	fi
 fi
