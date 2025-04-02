@@ -1,0 +1,3 @@
+.ssh/persephone_*
+.encrypted-aliases
++gpg/*
