@@ -14,6 +14,9 @@ gum confirm "Create needed default folders? (like +org/)" && \
 gum confirm "Run 'yadm decrypt'?" && \
 	yadm decrypt
 
+gum confirm "Import GPG keys? (Only run if decrypted)" && \
+  sh ~/+gpg/import.sh
+
 gum confirm "Install fonts? (monaspace (frozen))" && \
 	wget https://github.com/githubnext/monaspace/releases/download/v1.200/monaspace-v1.200.zip && \
 	unzip monaspace-v1.200.zip -d monatemp && \
