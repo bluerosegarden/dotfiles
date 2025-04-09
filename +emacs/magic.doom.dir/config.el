@@ -75,11 +75,16 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 ;;
+;;
+
+(load! "coven-text.el")
 
 (setq fancy-splash-image (concat doom-private-dir "logo.svg"))
 (add-hook 'text-mode-hook
           (lambda ()
-            (variable-pitch-mode 1)))
+            (variable-pitch-mode 1)
+            (setq doom-modeline-enable-word-count t)
+            ))
 
 (defun col-strip (col-str)
   (butlast (split-string (mapconcat (lambda (x) (concat "#" x " "))
@@ -101,15 +106,15 @@
                       :slant 'normal
                       :weight 'bold)
   (set-face-attribute 'org-level-2 nil
-                      :height 1.8
+                      :height 1.6
                       :slant 'normal
                       :foreground (nth 1 color-theme))
   (set-face-attribute 'org-level-3 nil
-                      :height 1.6
+                      :height 1.4
                       :slant 'normal
                       :foreground (nth 2 color-theme))
   (set-face-attribute 'org-level-4 nil
-                      :height 1.4
+                      :height 1.2
                       :slant 'normal
                       :foreground (nth 3 color-theme))
   (set-face-attribute 'org-level-5 nil
@@ -119,56 +124,6 @@
                       :slant 'normal
                       :foreground (nth 5 color-theme))
   )
-(defface w-text '((t ( :foreground "#D1A0EA" :inherit text ) )) "Witch's Text" :group 'org-mode)
-(defvar w-text 'w-text)
-
-(defface c-text '((t (:foreground "#ec51cd" :inherit text ) )) "Celeste's Text" :group 'org-mode )
-(defvar c-text 'c-text)
-
-(defface m-text '((t (:foreground "#5459b6" :inherit text ) )) "Magician's Text" :group 'org-mode )
-(defvar m-text 'm-text)
-
-(defface n-text '((t (:foreground "#6a6273" :inherit text ) )) "Nyx's Text" :group 'org-mode )
-(defvar n-text 'n-text)
-
-(defface g-text '((t (:foreground "#76e37a" :inherit text ) )) "Gidget's Text" :group 'org-mode )
-(defvar g-text 'g-text)
-
-
-(defface g-text '((t (:foreground "#6a6273" :inherit text :weight extra-bold) )) "Gidgit's Text" :group 'org-mode )
-(defvar g-text 'g-text)
-  ;;; Add keywords
-(defun add-alter-keywords()
-  "adds custom keywords for highlighting text in org-mode."
-  (font-lock-add-keywords nil
-                          '(("^w: .*$" . 'w-text))
-                          )
-  (font-lock-add-keywords nil
-                          '(("^m: .*$" . 'm-text))
-                          )
-  (font-lock-add-keywords nil
-                          '(("^c: .*$" . 'c-text))
-                          )
-  (font-lock-add-keywords nil
-                          '(("^n: .*$" . 'n-text))
-                          )
-  (font-lock-add-keywords nil
-                          '(("^g: .*$" . 'g-text))
-                          )
-  )
-
-(defun display-persona-names()
-  (use-package! ov)
-  (ov-set (ov-regexp "^m:") 'display "<magician>")
-  (ov-set (ov-regexp "^w:") 'display "<witch>")
-  (ov-set (ov-regexp "^c:") 'display "<celeste>")
-  (ov-set (ov-regexp "^n:") 'display "<nyx>")
-  (ov-set (ov-regexp "^g:") 'display "<gidget>")
-  )
-(add-hook 'org-mode-hook 'display-persona-names)
-(add-hook 'org-mode-hook 'add-alter-keywords)
-(add-hook 'after-save-hook 'display-persona-names)
-
 (add-hook 'org-mode-hook 'global-org-modern-mode)
 
 (after! org-modern
@@ -189,23 +144,18 @@
 
 (setq org-return-follows-link  t)
 
+(setq display-line-numbers-type 'relative)
+
+(custom-set-faces
+ '(font-lock-comment-face ((t (:family "Monaspace Radon Frozen"))))
+ '(line-number ((t (:family "Monaspace Radon Frozen" :height 120 :foreground "#7f7f7f"))))
+ '(line-number-current-line ((t (:family "Monaspace Radon Frozen" :height 120 :foreground "#2a2a2a"))))
+ '(font-lock-string-face ((t (:family "Monaspace Argon Frozen" :italic t))))
+ )
+
+(+global-word-wrap-mode +1)
+
 ;;Install these later
 ;;https://github.com/tty-tourist/org-tracktable
 ;;https://github.com/danielsz/Palimpsest
 
-
-;;
-;;
-;; (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
-;; (setq org-superstar-headline-bullets-list
-;;       '("✿" "◉" "✪" "○" "▷"))
-;; (set-face-attribute 'org-level-8 nil :weight 'bold :inherit 'default)
-;; ;; Low levels are unimportant => no scaling
-;; (set-face-attribute 'org-level-7 nil :inherit 'org-level-8)
-;; (set-face-attribute 'org-level-6 nil :inherit 'org-level-8)
-;; (set-face-attribute 'org-level-5 nil :inherit 'org-level-8)
-;; (set-face-attribute 'org-level-4 nil :inherit 'org-level-8)
-;; ;; Top ones get scaled the same as in LaTeX (\large, \Large, \LARGE)
-;; (set-face-attribute 'org-level-3 nil :inherit 'org-level-8 :height 1.4) ;\large
-;; (set-face-attribute 'org-level-2 nil :inherit 'org-level-8 :height 1.4) ;\Large
-;; (set-face-attribute 'org-level-1 nil :inherit 'org-level-8 :height 1.7) ;\LARGE

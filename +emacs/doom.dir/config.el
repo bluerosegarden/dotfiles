@@ -84,29 +84,17 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;;[TODO]
-;; todo))
-;; [TODO]
-;; [TRACE]
-;; BAR
-;; todo
-;; fixme
-;; todo
-;;
-
+;; [[Custom hl-todo faces and colors]]
 ;;(after! hl-todo
 ;;  (setq hl-todo-keyword-faces
 ;;	`(("FOO" . "#ff0000")
 ;;	  ("BAR" . "#ff0000"))))
 
-;;(after! hl-todo
-;;  (setq hl-todo-keyword-faces
-;;	`(("todo))" . "#ff0000")
-;;	  ("fixme" . "#ff0000"))))
-
-;; Setting
+(setq display-line-numbers-type 'relative)
 
 (custom-set-faces
  '(font-lock-comment-face ((t (:family "Monaspace Radon Frozen"))))
  '(font-lock-string-face ((t (:family "Monaspace Argon Frozen" :italic t))))
  )
+
+(+global-word-wrap-mode +1)

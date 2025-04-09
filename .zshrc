@@ -37,6 +37,7 @@ alias em="emacsclient -s magic -nc"
 alias e="emacsclient -s doom -nc"
 alias "g+++"="g++ *.cpp *.h"
 alias v="nvim"
+alias sshh="ssh chair@ssh.bluewitch.app -p 842 -i ~/.ssh/persephone_wych"
 alias lk-exec="docker exec -it lorekeeper-services-frontend-1 sh -c" 
 
 export PATH="$HOME/+emacs/doom.emacs.d/bin:$PATH"
