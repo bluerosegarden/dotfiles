@@ -21,8 +21,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Monaspace Neon Frozen" :size 20 :weight 'normal)
-      doom-variable-pitch-font (font-spec :family "Baskervville" :size 26)
+(setq doom-font (font-spec :family "Monaspace Neon Frozen" :size 24 :weight 'normal)
+      doom-variable-pitch-font (font-spec :family "Baskervville" :size 28)
       )
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -122,8 +122,8 @@
 (map! :after evil-org
       :localleader
       :map evil-org-mode-map
-      :prefix "v"
-      :desc "valign table" "S" #'valign-table)
+      :prefix "b"
+      :desc "valign table" "v" #'valign-table)
 
 (map! :after evil-org
       :localleader
