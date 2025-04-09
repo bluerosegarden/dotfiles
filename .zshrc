@@ -7,7 +7,7 @@ export ZEN_MODE="on"
 autoload -Uz compinit
 compinit
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-source ".encrypted-aliases"
+source ".encrypted-aliases.zshrc"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 notify-send() { wsl-notify-send.exe --category $WSL_DISTRO_NAME "${@}"; }
