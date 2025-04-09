@@ -22,7 +22,8 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec :family "Monaspace Neon Frozen" :size 20 :weight 'normal)
-      doom-variable-pitch-font (font-spec :family "Baskervville" :size 26))
+      doom-variable-pitch-font (font-spec :family "Baskervville" :size 26)
+      )
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -79,12 +80,19 @@
 
 (load! "coven-text.el")
 
+
 (setq fancy-splash-image (concat doom-private-dir "logo.svg"))
 (add-hook 'text-mode-hook
           (lambda ()
-            (variable-pitch-mode 1)
+            (mixed-pitch-mode 1)
+            ;;(variable-pitch-mode 1)
             (setq doom-modeline-enable-word-count t)
             ))
+(after! valign
+
+  (setq valign-fancy-bar t)
+  (add-hook 'org-mode-hook #'valign-mode)
+  )
 
 (defun col-strip (col-str)
   (butlast (split-string (mapconcat (lambda (x) (concat "#" x " "))
@@ -98,6 +106,38 @@
                      ))
 (setq pick-color 1)
 (setq color-theme (nth pick-color color-schemes))
+
+(defun org-tracktable-write-format ()
+  (interactive)
+  (org-tracktable-write)
+  (valign-table)
+  )
+
+(map! :after evil-org
+      :localleader
+      :map evil-org-mode-map
+      :prefix "b"
+      :desc "tracktable insert table" "I" #'org-tracktable-insert-table)
+
+(map! :after evil-org
+      :localleader
+      :map evil-org-mode-map
+      :prefix "v"
+      :desc "valign table" "S" #'valign-table)
+
+(map! :after evil-org
+      :localleader
+      :map evil-org-mode-map
+      :prefix "b"
+      :desc "tracktable status" "S" #'org-tracktable-status)
+
+(map! :after evil-org
+      :localleader
+      :map evil-org-mode-map
+      :prefix "b"
+      :desc "tracktable write" "r" #'org-tracktable-write-format)
+;;(after! org-tracktable
+;;  )
 
 (after! org-faces
   (set-face-attribute 'org-level-1 nil
@@ -136,6 +176,7 @@
    org-modern-star 'replace
    org-modern-replace-stars "✿◉❀❁"
    org-modern-hide-stars nil
+   org-modern-table nil
    org-modern-list '((?+ . "▶") (?- . "–") (?* . "•"))
    )
   (menu-bar-mode -1)
@@ -148,14 +189,15 @@
 
 (custom-set-faces
  '(font-lock-comment-face ((t (:family "Monaspace Radon Frozen"))))
- '(line-number ((t (:family "Monaspace Radon Frozen" :height 120 :foreground "#7f7f7f"))))
- '(line-number-current-line ((t (:family "Monaspace Radon Frozen" :height 120 :foreground "#2a2a2a"))))
+ '(line-number ((t (:family "Monaspace Neon Frozen" :height 120 :foreground "#7f7f7f"))))
+ '(line-number-current-line ((t (:family "Monaspace Neon Frozen" :height 120 :foreground "#2a2a2a"))))
  '(font-lock-string-face ((t (:family "Monaspace Argon Frozen" :italic t))))
+ '(org-table ((t (:family "Monaspace Krypton Frozen"))))
+ '(org-table-row ((t (:family "Monaspace Krypton Frozen"))))
+ '(org-table-header ((t (:family "Monaspace Krypton Frozen"))))
  )
 
 (+global-word-wrap-mode +1)
 
 ;;Install these later
-;;https://github.com/tty-tourist/org-tracktable
 ;;https://github.com/danielsz/Palimpsest
-

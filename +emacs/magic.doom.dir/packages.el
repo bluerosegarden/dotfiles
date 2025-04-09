@@ -55,3 +55,7 @@
 
 (package! ov)
 (package! org-superstar)
+
+(package! org-tracktable)
+(package! valign)
+(package! ftable)
