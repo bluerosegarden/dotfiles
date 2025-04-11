@@ -41,7 +41,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/+org/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -199,5 +199,18 @@
 
 (+global-word-wrap-mode +1)
 
+;; taken from here
+;; https://github.com/syl20bnr/spacemacs/issues/5320
+(defun evil-ex-define-cmd-local
+    (cmd function)
+  "Locally binds the function FUNCTION to the command CMD."
+  (unless (local-variable-p 'evil-ex-commands)
+    (setq-local evil-ex-commands (copy-alist evil-ex-commands)))
+  (evil-ex-define-cmd cmd function))
+(defun mw/evil-capture ()
+  (evil-insert-state)
+  (evil-ex-define-cmd-local "q[uit]" 'org-capture-finalize)
+  (evil-ex-define-cmd-local "wq"     'org-capture-finalize))
+(add-hook 'org-capture-mode-hook 'mw/evil-capture)
 ;;Install these later
 ;;https://github.com/danielsz/Palimpsest

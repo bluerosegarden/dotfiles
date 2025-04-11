@@ -23,3 +23,6 @@ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 . "/home/wych/.deno/env"
 source /home/wych/.local/share/bash-completion/completions/deno.bash
 . "$HOME/.cargo/env"
+
+# Following line was automatically added by arttime installer
+export MANPATH=/home/wych/.local/share/man:$MANPATH
