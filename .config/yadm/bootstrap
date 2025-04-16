@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# installing gum 
-sudo pacman -Syu && sudo pacman -S gum gpg
+# installing gum, gpg, and mise 
+sudo pacman -Syu && sudo pacman -S gum gpg mise
 
 gum style \
 	--foreground 212 --border-foreground 212 --border double \
@@ -17,11 +17,12 @@ gum confirm "Run 'yadm decrypt'?" && \
 gum confirm "Import GPG keys? (Only run if decrypted)" && \
   sh ~/+gpg/import.sh
 
-gum confirm "Install fonts? (monaspace (frozen))" && \
+gum confirm "Install fonts? (monaspace (frozen)) (large download)" && \
 	wget https://github.com/githubnext/monaspace/releases/download/v1.200/monaspace-v1.200.zip && \
 	unzip monaspace-v1.200.zip -d monatemp && \
 	mkdir -p ~/.local/share/fonts/monaspace/ && \
-	cp monatemp/monaspace-v1.200/fonts/frozen/* .local/share/fonts/monaspace
+	cp monatemp/monaspace-v1.200/fonts/frozen/* .local/share/fonts/monaspace && \
+  rm -R monatemp
 
 gum confirm "Install git-identity? (Manual w/o basher)" && \
 	wget https://github.com/madx/git-identity/raw/refs/heads/master/git-identity && \

@@ -146,7 +146,7 @@
                       :slant 'normal
                       :weight 'bold)
   (set-face-attribute 'org-level-2 nil
-                      :height 1.6
+                      :height 1.8
                       :slant 'normal
                       :foreground (nth 1 color-theme))
   (set-face-attribute 'org-level-3 nil
@@ -214,3 +214,5 @@
 (add-hook 'org-capture-mode-hook 'mw/evil-capture)
 ;;Install these later
 ;;https://github.com/danielsz/Palimpsest
+
+(setq reb-re-syntax #'string)
