@@ -26,3 +26,7 @@ source /home/wych/.local/share/bash-completion/completions/deno.bash
 
 # Following line was automatically added by arttime installer
 export MANPATH=/home/wych/.local/share/man:$MANPATH
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

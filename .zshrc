@@ -38,6 +38,7 @@ alias e="emacsclient -s doom -nc"
 alias "g+++"="g++ *.cpp *.h"
 alias v="nvim"
 alias lk-exec="docker exec -it lorekeeper-services-frontend-1 sh -c" 
-
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/+emacs/doom.emacs.d/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
