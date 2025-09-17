@@ -1,7 +1,17 @@
 #!/bin/sh
 
-# installing gum, gpg, and mise 
-sudo pacman -Syu && sudo pacman -S gum gpg mise
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    OS=$NAME
+fi 
+
+if [ "$OS" == "NixOS" ]; then
+  sudo cp ~/+nix/flake.nix /etc/nixos/
+  sudo nixos-rebuild switch --impure
+else
+  sudo pacman -Syu && sudo pacman -S gum gpg
+fi
+
 
 gum style \
 	--foreground 212 --border-foreground 212 --border double \
@@ -24,12 +34,12 @@ gum confirm "Install fonts? (monaspace (frozen)) (large download)" && \
 	cp monatemp/monaspace-v1.200/fonts/frozen/* .local/share/fonts/monaspace && \
   rm -R monatemp
 
-gum confirm "Install git-identity? (Manual w/o basher)" && \
+gum confirm "Install git-identity? (Manual w/o basher) IF ON ARCH" && \
 	wget https://github.com/madx/git-identity/raw/refs/heads/master/git-identity && \
 	chmod 766 git-identity && \
 	sudo mv git-identity /usr/local/bin
 
-gum confirm "Install emacs-lucid?" && \
+gum confirm "Install emacs-lucid? IF ON ARCH" && \
 	mkdir -p ~/git/software && \
 	gum format -- "# Cloning emacs-lucid" && \
 	git clone https://aur.archlinux.org/emacs-lucid.git ~/git/software/ && \
@@ -44,7 +54,7 @@ gum confirm "Install doom emacs to '~/+emacs/doom.emacs.d' and +emacs/magic.emac
 	git clone git@github.com:doomemacs/doomemacs.git ~/+emacs/magic.emacs.d && \
 	gum format -- "# Don't forget to run doom install and doom install --profile magic in a new terminal!"
 
-gum confirm "Install Rustowl?" && \
+gum confirm "Install Rustowl? IF ON ARCH" && \
 	curl -L "https://github.com/cordx56/rustowl/releases/latest/download/install.sh" | sh
 
 

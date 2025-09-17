@@ -12,9 +12,11 @@
     # include NixOS-WSL modules
     <nixos-wsl/modules>
   ];
-
+virtualisation.docker.enable = true;
   wsl.enable = true;
   wsl.defaultUser = "wych";
+  programs.zsh.enable = true;
+  users.users.wych.shell = pkgs.zsh;
   networking.hostName = "spellbook";
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -26,13 +28,7 @@
   users.users.wych = {
     isNormalUser = true;
     description = "wych";
-    extraGroups = [ "networkmanager" "wheel" ];
-    openssh.authorizedKeys.keys = [
-        # Replace with your own public key
-        #"ssh-ed25519 <some-public-key> ryan@ryan-pc"
-    ];
-    packages = with pkgs; [
-    ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [

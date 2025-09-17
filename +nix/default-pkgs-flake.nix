@@ -5,20 +5,23 @@
   home.packages = with pkgs; [
    nnn
    gum
+   bat
    ripgrep
    eza
    glow
    docker
+   gnumake
    emacs
    yadm
    neovim
    zip
    unzip
    clang
-   gcc
-   rust
+   rustup
+   cargo-binstall
    gnupg
    zsh
+   zig
    starship
    git-identity
   ];
