@@ -1,3 +1,4 @@
+# WSL Home manager!!
 
 { config, pkgs, rustowl-flake, ...}:
 {
@@ -5,11 +6,12 @@
   home.homeDirectory = "/home/wych";
 
   home.packages = with pkgs; [
-    rustowl-flake.packages."x86_64-linux".default
+    rustowl-flake.packages."${system}".default
   ];
 
   imports = [ 
-   ./default-pkgs-flake.nix
+   ../../core.nix
+   ../../core-gui.nix
   ];
 
 }

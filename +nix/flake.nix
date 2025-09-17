@@ -12,21 +12,37 @@
 
   outputs = {self, nixpkgs, home-manager, rustowl-flake, ...}:{
 
-    nixosConfigurations.spellbook = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.sylph = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
+        ./hosts/sylph/system-config.nix
         home-manager.nixosModules.home-manager
         {
           home-manager = {
 	          useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { inherit rustowl-flake; };
-            users.wych = import ./home.nix;
+            users.wych = import ./hosts/sylph/home.nix;
             backupFileExtension = "backup";
           };
         }
       ];
   };
-};
+  
+    nixosConfigurations.dryad = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/dryad/system-config.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+	          useGlobalPkgs = true;
+            useUserPackages = true;
+            users.wych = import ./hosts/dryad/home.nix;
+            backupFileExtension = "backup";
+          };
+        }
+      ];
+    };
+  };
 }
