@@ -1,12 +1,12 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](red)\
+[](lavender)\
 $os\
 $username\
-[](bg:peach fg:red)\
-$directory\
-[](bg:yellow fg:peach)\
+[@](bg:lavender fg:crust)\
+$hostname$directory\
+[](bg:yellow fg:lavender)\
 $git_branch\
 $git_status\
 [](fg:yellow bg:green)\
@@ -24,19 +24,20 @@ $conda\
 [](fg:sapphire bg:lavender)\
 $time\
 [ ](fg:lavender)\
-$cmd_duration\
 $line_break\
-$character"""
+$character
+[ 󰁕 ](fg:lavender)"""
 
 palette = 'catppuccin_mocha'
 
 [os]
 disabled = false
-style = "bg:red fg:crust"
+style = "bg:lavender fg:crust"
 
 [os.symbols]
 Windows = ""
 Ubuntu = "󰕈"
+NixOS=""
 SUSE = ""
 Raspbian = "󰐿"
 Mint = "󰣭"
@@ -57,15 +58,15 @@ RedHatEnterprise = "󱄛"
 
 [username]
 show_always = true
-style_user = "bg:red fg:crust"
+style_user = "bg:lavender fg:crust"
 style_root = "bg:red fg:crust"
 format = '[ $user]($style)'
 
 [directory]
-style = "bg:peach fg:crust"
+style = "bg:lavender fg:crust"
 format = "[ $path ]($style)"
 truncation_length = 3
-truncation_symbol = "…/"
+truncation_symbol = "✦/"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -150,8 +151,8 @@ disabled = true
 
 [character]
 disabled = false
-success_symbol = '[❯](bold fg:green)'
-error_symbol = '[❯](bold fg:red)'
+success_symbol = '[](bold fg:green)'
+error_symbol = '[](bold fg:red)'
 vimcmd_symbol = '[❮](bold fg:green)'
 vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
 vimcmd_replace_symbol = '[❮](bold fg:lavender)'
@@ -159,10 +160,11 @@ vimcmd_visual_symbol = '[❮](bold fg:yellow)'
 
 [cmd_duration]
 show_milliseconds = true
-format = " in $duration "
+format = " $duration "
 style = "bg:lavender"
 disabled = false
 show_notifications = true
+min_time = 60000
 min_time_to_notify = 45000
 
 [palettes.catppuccin_mocha]
@@ -276,3 +278,8 @@ surface0 = "#363a4f"
 base = "#24273a"
 mantle = "#1e2030"
 crust = "#181926"
+
+[hostname]
+ssh_only = false
+style = "bg:lavender fg:crust"
+format = '[$ssh_symbol$hostname]($style)'
