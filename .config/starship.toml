@@ -143,6 +143,7 @@ ignore_base = false
 [time]
 disabled = false
 time_format = "%R"
+utc_time_offset="-6"
 style = "bg:lavender"
 format = '[[  $time ](fg:crust bg:lavender)]($style)'
 
