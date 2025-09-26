@@ -8,9 +8,13 @@
       inputs.nixpkgs.follows ="nixpkgs";
     };
   };
-  
 
-  outputs = {self, nixpkgs, home-manager, rustowl-flake, ...}:{
+  outputs = {self, nixpkgs, home-manager, rustowl-flake, ...}:
+
+  let 
+    env_vars = (builtins.fromTOML (builtins.readFile ./env.toml));
+  in
+  {
 
     nixosConfigurations.sylph = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -22,7 +26,9 @@
 	          useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { inherit rustowl-flake; };
-            users.wych = import ./hosts/sylph/home.nix;
+            users = {
+              "${env_vars.username}" = import ./hosts/sylph/home.nix;
+            };
             backupFileExtension = "backup";
           };
         }
@@ -38,7 +44,9 @@
           home-manager = {
 	          useGlobalPkgs = true;
             useUserPackages = true;
-            users.wych = import ./hosts/dryad/home.nix;
+            users = {
+              "${env_vars.username}" = import ./hosts/dryad/home.nix;
+            };
             backupFileExtension = "backup";
           };
         }

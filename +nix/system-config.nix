@@ -1,17 +1,24 @@
 { config, lib, pkgs, ... }:
 
+let 
+  env_vars = (builtins.fromTOML (builtins.readFile ./env.toml));
+in
 {
-  imports = [
+  imports = [ 
   ];
+
   virtualisation.docker.enable = true;
   programs.zsh.enable = true;
 
   system.stateVersion = "25.05"; # Did you read the comment?
-  users.users.wych = {
-    isNormalUser = true;
-    description = "wych";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-    shell = pkgs.zsh;
+  networking.hostName = "${env_vars.hostname}";
+  users.users= {
+    "${env_vars.username}" = {
+      isNormalUser = true;
+      description = "${env_vars.username}";
+      extraGroups = [ "networkmanager" "wheel" "docker" ];
+      shell = pkgs.zsh;
+    };
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [

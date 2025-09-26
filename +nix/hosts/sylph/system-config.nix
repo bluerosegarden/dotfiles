@@ -2,14 +2,16 @@
 
 { config, lib, pkgs, ... }:
 
+let 
+  env_vars = (builtins.fromTOML (builtins.readFile ../../env.toml));
+in
 {
-  networking.hostName = "sylph";
   imports = [
     # include NixOS-WSL modules
     <nixos-wsl/modules>
     ../../system-config.nix 
   ];
   wsl.enable = true;
-  wsl.defaultUser = "wych";
+  wsl.defaultUser = "${env_vars.username}";
 
 }
