@@ -1,7 +1,7 @@
 {
   description = "A witch's codebook";
   inputs ={
-    nixpkgs.url = "nixpkgs/nixos-25.05";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     rustowl-flake.url = "github:nix-community/rustowl-flake"; # Replace with the actual URL
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";

@@ -23,6 +23,9 @@
    zig
    starship
    git-identity
+   devbox
+   glow
+   atuin
   ];
 
 
