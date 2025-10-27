@@ -2,10 +2,11 @@
 if [[ ":$FPATH:" != *":/home/wych/.zsh/completions:"* ]]; then export FPATH="/home/wych/.zsh/completions:$FPATH"; fi
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
+eval "$(direnv hook zsh)"
 export ZEN_MODE="on"
 autoload -Uz compinit
 compinit
-source ".encrypted-aliases.zshrc"
+source "$HOME/.encrypted-aliases.zshrc"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 notify-send() { wsl-notify-send.exe --category $WSL_DISTRO_NAME "${@}"; }
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -32,13 +33,15 @@ alias ls="eza -lh --git"
 
 alias nix-search="nix search nixpkgs"
 
+alias help="glow ~/+bin/help.md"
+
 alias nixos-switch="sudo nixos-rebuild switch --impure"
 alias nixos-upgrade="sudo nixos-rebuild switch --impure --upgrade"
 #If the hostname isn't set, you can specify like "sudo nixos-rebuild switch --impure --flake '/home/wych/+nix/#sylph'"
 
 # paths
 export PATH="/home/wych/.deno/bin:$PATH"
-export PATH="$HOME/+emacs/doom.emacs.d/bin:$PATH"
+export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/+bin:$PATH"
 

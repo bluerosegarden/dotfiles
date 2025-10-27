@@ -24,6 +24,7 @@
    starship
    git-identity
    devbox
+   direnv
    glow
    atuin
   ];
