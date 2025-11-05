@@ -11,7 +11,7 @@ function emacs_up()
 	daemon=${1}
 	if ! ps -e -o args | grep -i 'emacs' | grep -q "daemon=$daemon"; then
 		echo "Launching Emacs $daemon daemon"
-		emacs --daemon=$daemon  --init-directory="$HOME/+emacs/doom.emacs.d" --profile $daemon
+		emacs --daemon=$daemon  --profile $daemon
 	else
 		echo "$daemon Emacs server already online"
 	fi

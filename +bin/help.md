@@ -15,6 +15,7 @@ alias v="nvim"
 `devbox init` - creates devbox in the current folder
 `devbox add <x>` - adds <x> to the local devbox 
 `devbox shell` - enters the local devbox to use locally installed software 
+`devbox generate direnv` - allows devbox packages to be loaded automatically upon cding
 
 ### lume
 [docs](https://lume.land/docs/overview/about-lume/)

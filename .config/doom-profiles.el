@@ -1,7 +1,7 @@
 ;; in ~/.emacs.d/profiles.el
 (
- (doom (user-emacs-directory . "~/+emacs/doom.emacs.d/")
+ (doom (user-emacs-directory . "~/.emacs.d/")
              ("DOOMDIR" . "~/+emacs/doom.dir"))
- (magic (user-emacs-directory . "~/+emacs/magic.emacs.d/")
+ (magic (user-emacs-directory . "~/.emacs.d/")
              ("DOOMDIR" . "~/+emacs/magic.doom.dir"))
 )

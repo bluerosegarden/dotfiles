@@ -216,3 +216,10 @@
 ;;https://github.com/danielsz/Palimpsest
 
 (setq reb-re-syntax #'string)
+
+(use-package eglot
+  :hook
+  (text-mode . eglot-ensure)
+  :config
+  (add-to-list 'eglot-server-programs
+               '(text-mode . ("harper-ls" "--stdio"))))

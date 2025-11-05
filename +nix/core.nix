@@ -4,6 +4,7 @@
   home.stateVersion = "25.05";
   home.packages = with pkgs; [
    nnn
+   fd
    gum
    bat
    ripgrep
@@ -27,6 +28,13 @@
    direnv
    glow
    atuin
+   superhtml
+   javascript-typescript-langserver
+   typst
+   typstfmt
+   harper
+   typescript-language-server
+   delta
   ];
 
 

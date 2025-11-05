@@ -13,7 +13,12 @@ notify-send() { wsl-notify-send.exe --category $WSL_DISTRO_NAME "${@}"; }
 export DISPLAY=$(ipconfig.exe | grep -m 1 IPv4 | awk '{print $14}' | awk 'sub(/\r$/,"")'):0.0
 export LIBGL_ALWAYS_INDIRECT=1
 
-export DOOMDIR="$HOME/+emacs/doom.dir"
+export DOOM_PROFILE_DIR="$HOME/+emacs/doom.dir"
+export MAGIC_PROFILE_DIR="$HOME/+emacs/magic.doom.dir"
+
+export DOOMDIR="$HOME/.doom.d"
+
+#export DOOMPROFILE="magic"
 
 #Aliases
 #
@@ -24,6 +29,15 @@ alias emstop="emacs-daemon magic down"
 
 alias em="emacsclient -s magic -nc"
 alias e="emacsclient -s doom -nc"
+
+alias ee="DOOMDIR=$DOOM_PROFILE_DIR emacs --init-directory=$HOME/+emacs/doom.emacs.d"
+alias eem="DOOMDIR=$MAGIC_PROFILE_DIR emacs --init-directory=$HOME/+emacs/magic.emacs.d"
+
+alias esync="DOOMDIR=$DOOM_PROFILE_DIR sh $HOME/+emacs/doom.emacs.d/bin/doom.sh sync"
+alias emsync="DOOMDIR=$MAGIC_PROFILE_DIR sh $HOME/+emacs/magic.emacs.d/bin/doom.sh sync"
+
+alias einstall="DOOMDIR=$DOOM_PROFILE_DIR sh $HOME/+emacs/doom.emacs.d/bin/doom.sh install"
+alias eminstall="DOOMDIR=$MAGIC_PROFILE_DIR sh $HOME/+emacs/magic.emacs.d/bin/doom.sh install"
 
 alias "g+++"="g++ *.cpp *.h"
 alias v="nvim"
