@@ -5,11 +5,15 @@
   home.packages = with pkgs; [
    nnn
    fd
+   fzf
+   fclones
+   trashy
    gum
    bat
    ripgrep
    eza
    glow
+   difftastic
    docker
    gnumake
    yadm
