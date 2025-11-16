@@ -52,5 +52,26 @@
         }
       ];
     };
+
+    nixosConfigurations.salamander = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/salamander/system-config.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+	          useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = { inherit rustowl-flake; };
+            users = {
+              "${env_vars.username}" = import ./hosts/salamander/home.nix;
+            };
+            backupFileExtension = "backup";
+          };
+        }
+      ];
   };
+  
+  };
+
 }

@@ -10,7 +10,7 @@ in
   virtualisation.docker.enable = true;
   programs.zsh.enable = true;
 
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
   networking.hostName = "${env_vars.hostname}";
   users.users= {
     "${env_vars.username}" = {
