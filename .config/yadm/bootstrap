@@ -5,13 +5,6 @@ if [ -f /etc/os-release ]; then
     OS=$NAME
 fi 
 
-if [ "$OS" == "NixOS" ]; then
-  sudo cp ~/+nix/flake.nix /etc/nixos/
-  sudo nixos-rebuild switch --impure
-else
-  sudo pacman -Syu && sudo pacman -S gum gpg
-fi
-
 
 gum style \
 	--foreground 212 --border-foreground 212 --border double \
@@ -49,9 +42,9 @@ gum confirm "Install emacs-lucid? IF ON ARCH" && \
 	gpg --recv-key 2D4E1FE95957135D && \ 
 	makepkg -si
 
-gum confirm "Install doom emacs to '~/+emacs/doom.emacs.d' and +emacs/magic.emacs.d?" && \
-	git clone git@github.com:doomemacs/doomemacs.git ~/+emacs/doom.emacs.d && \
-	git clone git@github.com:doomemacs/doomemacs.git ~/+emacs/magic.emacs.d && \
+gum confirm "Install doom emacs to '~/.emacs.d'?" && \
+	git clone git@github.com:doomemacs/doomemacs.git ~/.emacs.d && \
+	#git clone git@github.com:doomemacs/doomemacs.git ~/+emacs/magic.emacs.d && \
 	gum format -- "# Don't forget to run doom install and doom install --profile magic in a new terminal!"
 
 gum confirm "Install Rustowl? IF ON ARCH" && \
