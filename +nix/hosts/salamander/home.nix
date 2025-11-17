@@ -11,6 +11,8 @@ in
 
   home.packages = with pkgs; [
     rustowl-flake.packages."${system}".default
+    kdePackages.karousel
+    kdePackages.kwin
   ];
 
   imports = [ 

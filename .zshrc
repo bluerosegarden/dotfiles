@@ -4,6 +4,7 @@ eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
 eval "$(direnv hook zsh)"
 export ZEN_MODE="on"
+export NIX_PATH="/home/wych/+nix/:$NIX_PATH"
 autoload -Uz compinit
 compinit
 source "$HOME/.encrypted-aliases.zshrc"
@@ -51,6 +52,7 @@ alias help="glow ~/+bin/help.md"
 
 alias nixos-switch="sudo nixos-rebuild switch --impure"
 alias nixos-upgrade="sudo nixos-rebuild switch --impure --upgrade"
+
 #If the hostname isn't set, you can specify like "sudo nixos-rebuild switch --impure --flake '/home/wych/+nix/#sylph'"
 
 # paths
