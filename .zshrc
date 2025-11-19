@@ -50,8 +50,8 @@ alias nix-search="nix search nixpkgs"
 
 alias help="glow ~/+bin/help.md"
 
-alias nixos-switch="sudo nixos-rebuild switch --impure"
-alias nixos-upgrade="sudo nixos-rebuild switch --impure --upgrade"
+alias nixos-switch="sudo nixos-rebuild switch --impure --flake $HOME/+nix/#$HOST"
+alias nixos-upgrade="sudo nixos-rebuild switch --impure --upgrade --flake $HOME/+nix/#$HOST"
 
 #If the hostname isn't set, you can specify like "sudo nixos-rebuild switch --impure --flake '/home/wych/+nix/#sylph'"
 
