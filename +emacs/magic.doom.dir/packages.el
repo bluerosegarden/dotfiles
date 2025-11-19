@@ -59,3 +59,5 @@
 (package! org-tracktable)
 (package! valign)
 (package! ftable)
+(package! obsidian)
+
