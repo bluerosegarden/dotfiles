@@ -13,6 +13,9 @@ in
     rustowl-flake.packages."${system}".default
     kdePackages.karousel
     kdePackages.kwin
+    obsidian
+    syncthing
+    syncthingtray
   ];
 
   imports = [ 
