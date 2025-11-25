@@ -16,6 +16,7 @@ in
     obsidian
     syncthing
     syncthingtray
+    mullvad-vpn
   ];
 
   imports = [ 
