@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: Typst Frontmatter
+# uuid: 
+# key: typst
+# condition: t
+# --
+#+OPTIONS: toc:nil
+#+BEGIN_EXPORT typst
+#import "mla9.typ": *
+#show: mla.with(
+  author: (
+    firstname: "Blue",
+    lastname: "Ingram"
+),
+  title: ""
+)
+#+END_EXPORT
+

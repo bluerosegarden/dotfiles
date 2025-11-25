@@ -60,4 +60,6 @@
 (package! valign)
 (package! ftable)
 (package! obsidian)
-
+(package! ox-typst)
+(package! org-contrib
+  :recipe (:host github :repo "emacsmirror/org-contrib"))

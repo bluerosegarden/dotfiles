@@ -217,6 +217,15 @@
 
 (setq reb-re-syntax #'string)
 
+(use-package ox-typst
+  :after org)
+
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
+
+(use-package org-contrib
+  :after org)
+
 (use-package eglot
   :hook
   (text-mode . eglot-ensure)
