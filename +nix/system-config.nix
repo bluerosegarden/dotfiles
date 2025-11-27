@@ -24,7 +24,7 @@ in
   environment.systemPackages = with pkgs; [
     # Flakes clones its dependencies through the git command,
     # so git must be installed first
-    git
+    gitFull
     vim
     neovim
     wget

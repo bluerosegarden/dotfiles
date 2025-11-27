@@ -17,6 +17,7 @@ in
     syncthing
     syncthingtray
     mullvad-vpn
+    font-manager
   ];
 
   imports = [ 
